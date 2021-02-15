@@ -22,6 +22,12 @@ var animList: = [
 	["mage_m_idle",		"mage_m_run"],
 ]
 
+func _ready()->void:
+	owner.emit_signal("add_player", self)
+	print(owner.name)
+
+func _exit_tree()->void:
+	owner.emit_signal("remove_player", self)
 
 func set_dir()->void:
 	dir.x = Input.get_action_strength("right_p"+ctrl) - Input.get_action_strength("left_p"+ctrl)

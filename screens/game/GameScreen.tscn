@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://tilesets/grass_and_dirt.tres" type="TileSet" id=1]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/Camera.gd" type="Script" id=3]
+[ext_resource path="res://screens/game/GameScreen.gd" type="Script" id=4]
 
 [node name="GameScreen" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 160.75, 88.75 )
+current = true
+script = ExtResource( 3 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -13,3 +21,8 @@ tile_data = PoolIntArray( 0, 0, 4, 1, 0, 5, 2, 0, 5, 3, 0, 5, 4, 0, 5, 5, 0, 5, 
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 83.7922, 61.8719 )
+
+[node name="Player2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 126.652, 91.6357 )
+ctrl = "2"
+character = 4

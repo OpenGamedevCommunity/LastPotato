@@ -16,15 +16,15 @@ onready var spritePlayer:AnimationPlayer = $Body/SpritePlayer
 func set_dir()->void:
 	pass
 
-func _physics_process(_delta:float)->void:
-	set_dir()
-	velocity = dir * speed
-	velocity = move_and_slide(velocity)
-
 func _process(_delta:float)->void:
 	if abs(dir.x) > 0.01:
 		sprite.flip_h = dir.x < 0.0
 	set_animation()
+
+func _physics_process(_delta:float)->void:
+	set_dir()
+	velocity = dir * speed
+	velocity = move_and_slide(velocity)
 
 #inherited entities decide the implementation
 func set_animation()->void:
