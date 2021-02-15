@@ -8,6 +8,7 @@ script/source = "extends Button
 var GameScene:String = \"res://screens/game/GameScreen.tscn\"
 
 func _pressed()->void:
+# warning-ignore:return_value_discarded
 	get_tree().change_scene(GameScene)
 "
 
