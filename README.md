@@ -1,5 +1,5 @@
 # LastPotato
 Latvian Godot Community project
 
-##First screenshot    
+## First screenshot    
 ![project start](https://github.com/GodotEngineLatvia/LastPotato/raw/Development/assets/screenshots/project_start.png)
