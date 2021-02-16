@@ -35,9 +35,6 @@ func set_dir()->void:
 	dir.y = Input.get_action_strength("down_p"+ctrl) - Input.get_action_strength("up_p"+ctrl)
 	dir = dir.normalized()
 	
-	#if weapon is not null update it's dir
-	if holdable:
-		holdable.dir = dir
 
 func set_animation()->void:
 	if dir.length() > 0.1:
