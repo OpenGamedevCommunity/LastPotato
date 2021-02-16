@@ -11,7 +11,6 @@ func _ready()->void:
 var targets:Array
 func add_player(player:KinematicBody2D)->void:
 	targets.append(player)
-	print(player)
 
 func remove_player(player:KinematicBody2D)->void:
 	targets.erase(player)

@@ -24,7 +24,8 @@ var animList: = [
 
 func _ready()->void:
 	owner.emit_signal("add_player", self)
-	print(owner.name)
+	holdable = $Body/Sword1
+	holdable.user = self
 
 func _exit_tree()->void:
 	owner.emit_signal("remove_player", self)
@@ -33,6 +34,10 @@ func set_dir()->void:
 	dir.x = Input.get_action_strength("right_p"+ctrl) - Input.get_action_strength("left_p"+ctrl)
 	dir.y = Input.get_action_strength("down_p"+ctrl) - Input.get_action_strength("up_p"+ctrl)
 	dir = dir.normalized()
+	
+	#if weapon is not null update it's dir
+	if holdable:
+		holdable.dir = dir
 
 func set_animation()->void:
 	if dir.length() > 0.1:

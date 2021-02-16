@@ -13,9 +13,21 @@ _global_script_classes=[ {
 "class": "Entity",
 "language": "GDScript",
 "path": "res://entities/Entity.gd"
+}, {
+"base": "Node2D",
+"class": "Holdable",
+"language": "GDScript",
+"path": "res://objects/Holdable.gd"
+}, {
+"base": "Holdable",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://weapons/weapon.gd"
 } ]
 _global_script_class_icons={
-"Entity": ""
+"Entity": "",
+"Holdable": "",
+"Weapon": ""
 }
 
 [application]
@@ -108,6 +120,23 @@ down_p2={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
  ]
 }
+dash_p2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777352,"unicode":0,"echo":false,"script":null)
+ ]
+}
+action_p2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777351,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="environment"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemy"
+2d_physics/layer_4="item"
 
 [rendering]
 

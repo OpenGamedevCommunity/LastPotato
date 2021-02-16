@@ -11,6 +11,7 @@ var velocity: = Vector2.ZERO
 onready var body:Node2D = $Body
 onready var sprite:Sprite = $Body/Sprite
 onready var spritePlayer:AnimationPlayer = $Body/SpritePlayer
+var holdable:Holdable
 
 #inherited entities decide the implementation
 func set_dir()->void:
@@ -18,7 +19,7 @@ func set_dir()->void:
 
 func _process(_delta:float)->void:
 	if abs(dir.x) > 0.01:
-		sprite.flip_h = dir.x < 0.0
+		body.scale.x = sign(dir.x)
 	set_animation()
 
 func _physics_process(_delta:float)->void:
