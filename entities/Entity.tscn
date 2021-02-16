@@ -27,6 +27,7 @@ resource_name = "Run"
 loop = true
 
 [node name="Entity" type="KinematicBody2D"]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

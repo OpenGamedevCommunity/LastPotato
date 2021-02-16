@@ -3,7 +3,7 @@ class_name Holdable
 
 var user:KinematicBody2D
 
-
+#some holdable may be thrown or shot
 var dir: = Vector2.ZERO setget set_dir
 func set_dir(value:Vector2)->void:
 	if value.length() > 0.01:

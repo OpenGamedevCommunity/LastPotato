@@ -123,6 +123,8 @@ anims/Idle = SubResource( 3 )
 [node name="AttackBox" parent="." index="2"]
 monitoring = false
 monitorable = false
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" index="0"]
 position = Vector2( 10, 0 )

@@ -33,7 +33,6 @@ func use()->void:
 
 export(bool) var attacking: = false
 func attack()->void:
-	attackBox.rotation = dir.angle()
 	animationPlayer.play("Attack", -1, attackSpeed)
 
 
