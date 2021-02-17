@@ -11,21 +11,26 @@ var velocity: = Vector2.ZERO
 onready var body:Node2D = $Body
 onready var sprite:Sprite = $Body/Sprite
 onready var spritePlayer:AnimationPlayer = $Body/SpritePlayer
-var holdable:Holdable
+
+func _process(_delta:float)->void:
+	process()
+
+func _physics_process(_delta:float)->void:
+	physics(_delta)
 
 #inherited entities decide the implementation
 func set_dir()->void:
 	pass
 
-func _process(_delta:float)->void:
-	if abs(dir.x) > 0.01:
-		body.scale.x = sign(dir.x)
-	set_animation()
-
-func _physics_process(_delta:float)->void:
+func physics(_delta:float)->void:
 	set_dir()
 	velocity = dir * speed
 	velocity = move_and_slide(velocity)
+
+func process()->void:
+	if abs(dir.x) > 0.01:
+		body.scale.x = sign(dir.x)
+	set_animation()
 
 #inherited entities decide the implementation
 func set_animation()->void:

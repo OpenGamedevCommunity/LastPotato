@@ -1,146 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://entities/Entity.tscn" type="PackedScene" id=1]
-[ext_resource path="res://entities/player/Player.gd" type="Script" id=2]
-[ext_resource path="res://weapons/Sword1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://entities/enemy/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://assets/sprites/enemies/mobs.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
-resource_name = "knight_f_idle"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 16, 17 ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "knight_f_run"
-length = 0.6
-loop = true
-step = 0.12
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.12, 0.24, 0.36, 0.48 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 20, 21, 22, 23, 19 ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "knight_m_idle"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 24, 25 ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "knight_m_run"
-length = 0.6
-loop = true
-step = 0.12
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.12, 0.24, 0.36, 0.48 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 28, 29, 30, 31, 27 ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "mage_f_idle"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 32, 33 ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "mage_f_run"
-length = 0.6
-loop = true
-step = 0.15
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 36, 38, 37, 38 ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "mage_m_idle"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 40, 41 ]
-}
-
-[sub_resource type="Animation" id=8]
-resource_name = "mage_m_run"
-length = 0.6
-loop = true
-step = 0.15
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 43, 44, 45, 46 ]
-}
-
-[sub_resource type="Animation" id=9]
+resource_name = "mob1_idle"
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -155,10 +20,11 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=2]
+resource_name = "mob1_run"
 length = 0.6
 loop = true
-step = 0.15
+step = 0.12
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -166,13 +32,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.12, 0.24, 0.36, 0.48 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 6, 5, 6, 3 ]
+"values": [ 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=3]
+resource_name = "mob2_idle"
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -187,7 +54,8 @@ tracks/0/keys = {
 "values": [ 8, 9 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=4]
+resource_name = "mob2_run"
 length = 0.6
 loop = true
 step = 0.12
@@ -201,30 +69,96 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.12, 0.24, 0.36, 0.48 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 12, 13, 14, 15, 11 ]
+"values": [ 11, 12, 13, 14, 15 ]
 }
 
-[node name="Player" groups=[
-"Player",
-] instance=ExtResource( 1 )]
+[sub_resource type="Animation" id=5]
+resource_name = "mob3_idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 16, 17 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "mob3_run"
+length = 0.6
+loop = true
+step = 0.12
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.12, 0.24, 0.36, 0.48 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 19, 20, 21, 22, 23 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "mob4_idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 24, 25 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "mob4_run"
+length = 0.6
+loop = true
+step = 0.12
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.12, 0.24, 0.36, 0.48 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 27, 28, 29, 30, 31 ]
+}
+
+[node name="Enemy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+speed = 30.0
 
 [node name="Sprite" parent="Body" index="0"]
-frame = 20
+texture = ExtResource( 3 )
+vframes = 13
+frame = 0
 
 [node name="SpritePlayer" parent="Body" index="1"]
 autoplay = ""
-anims/knight_f_idle = SubResource( 1 )
-anims/knight_f_run = SubResource( 2 )
-anims/knight_m_idle = SubResource( 3 )
-anims/knight_m_run = SubResource( 4 )
-anims/mage_f_idle = SubResource( 5 )
-anims/mage_f_run = SubResource( 6 )
-anims/mage_m_idle = SubResource( 7 )
-anims/mage_m_run = SubResource( 8 )
-anims/rogue_f_idle = SubResource( 9 )
-anims/rogue_f_run = SubResource( 10 )
-anims/rogue_m_idle = SubResource( 11 )
-anims/rogue_m_run = SubResource( 12 )
+anims/mob1_idle = SubResource( 1 )
+anims/mob1_run = SubResource( 2 )
+anims/mob2_idle = SubResource( 3 )
+anims/mob2_run = SubResource( 4 )
+anims/mob3_idle = SubResource( 5 )
+anims/mob3_run = SubResource( 6 )
+anims/mob4_idle = SubResource( 7 )
+anims/mob4_run = SubResource( 8 )
 
-[node name="Sword1" parent="Body" index="2" instance=ExtResource( 3 )]
+[node name="Timer" type="Timer" parent="." index="2"]
+one_shot = true

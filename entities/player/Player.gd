@@ -22,13 +22,15 @@ var animList: = [
 	["mage_m_idle",		"mage_m_run"],
 ]
 
+
+var holdable:Holdable
 func _ready()->void:
-	owner.emit_signal("add_player", self)
+	owner.playerList.append(self)
 	holdable = $Body/Sword1
 	holdable.user = self
 
 func _exit_tree()->void:
-	owner.emit_signal("remove_player", self)
+	owner.playerList.erase(self)
 
 func set_dir()->void:
 	dir.x = Input.get_action_strength("right_p"+ctrl) - Input.get_action_strength("left_p"+ctrl)
