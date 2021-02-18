@@ -141,6 +141,7 @@ tracks/0/keys = {
 }
 
 [node name="Enemy" instance=ExtResource( 1 )]
+collision_layer = 4
 script = ExtResource( 2 )
 speed = 30.0
 

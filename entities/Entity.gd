@@ -3,6 +3,10 @@ class_name Entity
 
 
 
+export(float) var maxHealth: = 100.0
+var health: = maxHealth
+var is_damaged: = false
+
 export(float) var speed: = 1.0 * 60
 var dir: = Vector2.ZERO
 var velocity: = Vector2.ZERO
@@ -35,3 +39,11 @@ func process()->void:
 #inherited entities decide the implementation
 func set_animation()->void:
 	pass
+
+func take_damage(damage: float)->void:
+	health -= damage
+	if health < 0.0:
+		death()
+
+func death()->void:
+	queue_free()

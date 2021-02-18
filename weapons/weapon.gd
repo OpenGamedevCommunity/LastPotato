@@ -11,6 +11,7 @@ const WeaponScenes: = [
 ]
 
 export(float) var attackSpeed: = 1.25
+export(float) var damage: = 25.0
 
 onready var animationPlayer:AnimationPlayer = $AnimationPlayer
 onready var attackBox:Area2D = $AttackBox
@@ -39,7 +40,6 @@ func attack()->void:
 func body_entered(body:PhysicsBody2D)->void:
 	if body == user:
 		return
-
-	if attacking:
-		print("attacking: ", body)
+	body.take_damage(damage)
+	print(body.health)
 

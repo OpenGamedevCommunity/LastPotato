@@ -21,3 +21,5 @@ region_rect = Rect2( 35, 10, 10, 21 )
 anims/Attack = SubResource( 1 )
 
 [node name="AttackBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
