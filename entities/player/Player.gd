@@ -35,7 +35,7 @@ func _exit_tree()->void:
 func set_dir()->void:
 	dir.x = Input.get_action_strength("right_p"+ctrl) - Input.get_action_strength("left_p"+ctrl)
 	dir.y = Input.get_action_strength("down_p"+ctrl) - Input.get_action_strength("up_p"+ctrl)
-	dir = dir.normalized()
+	dir = dir.normalized() if dir.length() > 1.0 else dir
 	
 
 func set_animation()->void:

@@ -42,6 +42,10 @@ config/name="LastPotato"
 run/main_scene="res://screens/title/TitleScreen.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+InputHandler="*res://autoload/InputHandler.gd"
+
 [display]
 
 window/size/width=320
