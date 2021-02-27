@@ -44,6 +44,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Settings="*res://autoload/Settings.gd"
 InputHandler="*res://autoload/InputHandler.gd"
 
 [display]
