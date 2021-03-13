@@ -160,6 +160,3 @@ anims/mob3_idle = SubResource( 5 )
 anims/mob3_run = SubResource( 6 )
 anims/mob4_idle = SubResource( 7 )
 anims/mob4_run = SubResource( 8 )
-
-[node name="Timer" type="Timer" parent="." index="2"]
-one_shot = true

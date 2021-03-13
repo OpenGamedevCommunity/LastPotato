@@ -44,3 +44,6 @@ frame = 8
 autoplay = "Idle"
 anims/Idle = SubResource( 2 )
 anims/Run = SubResource( 3 )
+
+[node name="StateTimer" type="Timer" parent="."]
+one_shot = true
