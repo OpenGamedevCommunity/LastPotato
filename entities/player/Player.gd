@@ -24,7 +24,7 @@ var animList: = [
 
 
 var holdable:Holdable
-func _ready()->void:
+func on_ready()->void:
 	owner.playerList.append(self)
 	holdable = $Body/Sword1
 	holdable.user = self

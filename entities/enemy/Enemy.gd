@@ -19,18 +19,16 @@ enum {
 	IDLE,
 	WANDER,
 	TARGET,
-	HIT
+	HIT,
+	HURT
 }
 
 var state: = IDLE
 var target:KinematicBody2D
 export(float) var agroRange: = 64.0
 export(float) var attackRange: = 5.0
-onready var timer:Timer = $Timer
 
-func _ready()->void:
-# warning-ignore:return_value_discarded
-	timer.connect("timeout", self, "timeout")
+func on_ready()->void:
 	set_idle()
 
 #inherited entities decide the implementation
@@ -40,21 +38,20 @@ func set_dir()->void:
 		if direction.length() <= agroRange:
 			dir = direction.normalized()
 		else:
+			target = null
 			set_wander()
 
-func physics(_delta:float)->void:
-	set_dir()
-	velocity = dir * speed
-	velocity = move_and_slide(velocity)
 
 func process()->void:
-	if abs(dir.x) > 0.01:
-		body.scale.x = sign(dir.x)
 	check_target()
-	set_animation()
+	.process()	#call inherited function from Entity
 
-#inherited entities decide the implementation
+
 func set_animation()->void:
+	if is_damaged:
+		spritePlayer.play(animList[mob][0])	#idle while prototyping
+		return
+		
 	match state:
 		IDLE:
 			spritePlayer.play(animList[mob][0])
@@ -65,16 +62,15 @@ func set_animation()->void:
 
 func set_idle()->void:
 	state = IDLE
-	timer.start(rand_range(1,2))
+	stateTimer.start(rand_range(1,2))
 	dir = Vector2.ZERO
 
 func set_wander()->void:
 	state = WANDER
-	timer.start(rand_range(2,5))
+	stateTimer.start(rand_range(2,5))
 	dir = Vector2.RIGHT.rotated(randf()*PI*2) * 0.5
 
 func check_target()->void:
-# warning-ignore:unused_variable
 	var dist: = agroRange
 	for t in owner.playerList:
 		var d:float = (t.global_position - global_position).length()
@@ -83,7 +79,7 @@ func check_target()->void:
 			target = t
 			state = TARGET
 
-func timeout()->void:
+func stateTimeout()->void:
 	if state == IDLE:
 		set_wander()
 	elif state == WANDER:
