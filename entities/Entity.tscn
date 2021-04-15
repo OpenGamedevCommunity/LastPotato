@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/sprites/characters/Heroes.png" type="Texture" id=1]
+[ext_resource path="res://utility/statemachine/StateMachine.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 2 )
@@ -47,3 +48,10 @@ anims/Run = SubResource( 3 )
 
 [node name="StateTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Damaged" type="Node" parent="StateMachine"]
+
+[node name="Death" type="Node" parent="StateMachine"]

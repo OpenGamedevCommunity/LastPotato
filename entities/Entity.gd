@@ -20,15 +20,14 @@ onready var body:Node2D = $Body
 onready var sprite:Sprite = $Body/Sprite
 onready var spritePlayer:AnimationPlayer = $Body/SpritePlayer
 onready var stateTimer:Timer = $StateTimer
+onready var sm:Node = $StateMachine
 
 func _ready()->void:
-# warning-ignore:return_value_discarded
-	stateTimer.connect("timeout", self, "stateTimeout")
 	# overridable function to reduce triggering _ready on all inheritted levels
 	on_ready()
 
-func _process(_delta:float)->void:
-	process()
+func _process(delta:float)->void:
+	process(delta)
 
 func _physics_process(_delta:float)->void:
 	physics(_delta)
@@ -36,24 +35,14 @@ func _physics_process(_delta:float)->void:
 func on_ready()->void:
 	pass
 
-#inherited entities decide the implementation
-func set_dir()->void:
-	pass
-
+# warning-ignore:unused_argument
 func physics(delta:float)->void:
-	if !is_damaged:
-		set_dir()
-	velocity = velocity.move_toward(dir * speed, acceleration *delta)
-	velocity = move_and_slide(velocity)
-
-func process()->void:
-	if abs(dir.x) > 0.01:
-		body.scale.x = sign(dir.x)
-	set_animation()
-
-#inherited entities decide the implementation
-func set_animation()->void:
 	pass
+
+# warning-ignore:unused_argument
+func process(delta:float)->void:
+	pass
+
 
 func take_damage(damage: float, impulse: = Vector2.ZERO)->void:
 	if is_damaged:
@@ -61,8 +50,10 @@ func take_damage(damage: float, impulse: = Vector2.ZERO)->void:
 	is_damaged = true
 	health -= damage
 	if health <= 0.0:
+		# TO-DO: Death state
 		death()
 	else:
+		#TO-DO: Damaged state
 		acceleration = acc *4		# alter value balancing with impulse
 		velocity = impulse			# give kickback
 		dir = Vector2.ZERO			# reset dir
@@ -74,6 +65,3 @@ func take_damage(damage: float, impulse: = Vector2.ZERO)->void:
 func death()->void:
 	queue_free()
 
-
-func stateTimeout()->void:
-	pass

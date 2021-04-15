@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://objects/Holdable.gd"
 }, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://utility/statemachine/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://utility/statemachine/StateMachine.gd"
+}, {
 "base": "Holdable",
 "class": "Weapon",
 "language": "GDScript",
@@ -33,6 +43,8 @@ _global_script_class_icons={
 "Entity": "",
 "FileSaveLoad": "",
 "Holdable": "",
+"State": "",
+"StateMachine": "",
 "Weapon": ""
 }
 

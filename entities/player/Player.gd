@@ -29,8 +29,17 @@ func on_ready()->void:
 	holdable = $Body/Sword1
 	holdable.user = self
 
-func _exit_tree()->void:
-	owner.playerList.erase(self)
+func physics(delta:float)->void:
+	if !is_damaged:
+		set_dir()
+	velocity = velocity.move_toward(dir * speed, acceleration *delta)
+	velocity = move_and_slide(velocity)
+
+# warning-ignore:unused_argument
+func process(delta:float)->void:
+	if abs(dir.x) > 0.01:
+		body.scale.x = sign(dir.x)
+	set_animation()
 
 func set_dir()->void:
 	dir.x = Input.get_action_strength("right_p"+ctrl) - Input.get_action_strength("left_p"+ctrl)
@@ -45,3 +54,6 @@ func set_animation()->void:
 		spritePlayer.play(animList[character][RUN])
 	else:
 		spritePlayer.play(animList[character][IDLE])
+
+func _exit_tree()->void:
+	owner.playerList.erase(self)
