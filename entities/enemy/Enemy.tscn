@@ -165,7 +165,6 @@ anims/mob4_idle = SubResource( 7 )
 anims/mob4_run = SubResource( 8 )
 
 [node name="StateMachine" parent="." index="3"]
-firstStatePath = NodePath("EnemyIdle")
 inputProcess = false
 
 [node name="EnemyIdle" type="Node" parent="StateMachine" index="0"]

@@ -20,16 +20,12 @@ export(float) var agroRange: = 64.0
 export(float) var attackRange: = 5.0
 
 func on_ready()->void:
-	sm.transition("EnemyIdle", {})
+	sm.start("EnemyIdle", {})
 
 func physics(delta:float)->void:
 	velocity = velocity.move_toward(dir * speed, acceleration *delta)
 	velocity = move_and_slide(velocity)
 
-# warning-ignore:unused_argument
-func process(delta:float)->void:
-	if abs(dir.x) > 0.01:
-		body.scale.x = sign(dir.x)
 
 # used by State
 func check_target()->void:
@@ -40,8 +36,6 @@ func check_target()->void:
 		if d <= dist:
 			dist = d
 			target = t
-			sm.transition("EnemyTarget", {})
-			
 
 # used by State
 func targeting()->void:
@@ -51,4 +45,3 @@ func targeting()->void:
 			dir = direction.normalized()
 		else:
 			target = null
-			sm.transition("EnemyWander", {})

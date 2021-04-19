@@ -21,7 +21,7 @@ func process(delta)->void:
 	pass
 
 # warning-ignore:unused_argument
-func physics_process(delta)->void:
+func physics(delta)->void:
 	pass
 
 # warning-ignore:unused_argument

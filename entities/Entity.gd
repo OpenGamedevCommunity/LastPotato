@@ -26,41 +26,16 @@ func _ready()->void:
 	# overridable function to reduce triggering _ready on all inheritted levels
 	on_ready()
 
-func _process(delta:float)->void:
-	process(delta)
-
-func _physics_process(_delta:float)->void:
-	physics(_delta)
-
 func on_ready()->void:
 	pass
 
 # warning-ignore:unused_argument
-func physics(delta:float)->void:
-	pass
-
-# warning-ignore:unused_argument
-func process(delta:float)->void:
-	pass
-
+func sprite_flip()->void:
+	if abs(dir.x) > 0.01:
+		body.scale.x = sign(dir.x)
 
 func take_damage(damage: float, impulse: = Vector2.ZERO)->void:
-	if is_damaged:
-		return
-	is_damaged = true
-	health -= damage
-	if health <= 0.0:
-		# TO-DO: Death state
-		death()
-	else:
-		#TO-DO: Damaged state
-		acceleration = acc *4		# alter value balancing with impulse
-		velocity = impulse			# give kickback
-		dir = Vector2.ZERO			# reset dir
-		stateTimer.start(recoveryTime)
-		yield(stateTimer, "timeout")
-		is_damaged = false
-		acceleration = acc
+	sm.transition("EntityDamaged", {damage = damage, impulse = impulse})
 
 func death()->void:
 	queue_free()
