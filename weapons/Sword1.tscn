@@ -5,69 +5,73 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Attack"
-step = 0.05
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("Offset/Sprite:rotation_degrees")
+step = 0.125
+tracks/0/type = "value"
+tracks/0/path = NodePath("AttackBox:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( -30, -0.25, 0, 0.0640553, -14.2498, -74.9488, -0.0871406, 0.465141, 0.536307, 0.930275, 111.106, -0.133311, -9.07016, 0.101558, -4.18623, -30, -0.139829, 15.5189, 0.113342, -1.69115 ),
-"times": PoolRealArray( 0, 0.15, 0.6, 1 )
+"times": PoolRealArray( 0.125, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:attacking")
+tracks/1/path = NodePath("AttackBox:monitorable")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4, 0.7 ),
+"times": PoolRealArray( 0.125, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("AttackBox:monitoring")
+tracks/2/path = NodePath("Offset:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.45, 0.75 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"times": PoolRealArray( 0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -5, 2 ), Vector2( 6, 1 ), Vector2( 8, -2 ), Vector2( 6, -5 ), Vector2( 0, -6 ), Vector2( 6, -5 ), Vector2( 8, -2 ), Vector2( 6, 1 ), Vector2( -5, 2 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AttackBox:monitorable")
+tracks/3/path = NodePath("AttackBox/CollisionShape2D:position")
 tracks/3/interp = 1
-tracks/3/loop_wrap = true
+tracks/3/loop_wrap = false
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.45, 0.75 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"times": PoolRealArray( 0, 0.125, 0.25, 0.375, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, 4 ), Vector2( 9, 3 ), Vector2( 12, 0 ), Vector2( 10, -3 ), Vector2( 4, -4 ) ]
 }
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle"
 step = 0.05
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("Offset/Sprite:rotation_degrees")
+tracks/0/type = "value"
+tracks/0/path = NodePath("AttackBox:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( -30, -0.25, 0, 0.0640553, -14.2498 ),
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:attacking")
+tracks/1/path = NodePath("AttackBox:monitorable")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -79,7 +83,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("AttackBox:monitoring")
+tracks/2/path = NodePath("Offset:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -87,33 +91,22 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("AttackBox:monitorable")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"update": 0,
+"values": [ Vector2( -5, 2 ) ]
 }
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 8, 4 )
+extents = Vector2( 4, 3 )
 
 [node name="Sword1" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+attackSpeed = 2.0
 
 [node name="Offset" parent="." index="0"]
-position = Vector2( -2, -6 )
+position = Vector2( -5, 2 )
 
 [node name="Sprite" parent="Offset" index="0"]
-rotation = -0.523599
+rotation = 0.0
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "Idle"
@@ -125,5 +118,5 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox" index="0"]
-position = Vector2( 10, 0 )
+position = Vector2( -1, 4 )
 shape = SubResource( 3 )

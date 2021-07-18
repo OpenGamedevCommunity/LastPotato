@@ -29,6 +29,7 @@ resource_name = "Run"
 loop = true
 
 [node name="Entity" type="KinematicBody2D"]
+z_index = 1
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -39,8 +40,8 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="Body"]
 texture = ExtResource( 1 )
 offset = Vector2( 0, -16 )
-vframes = 8
 hframes = 8
+vframes = 8
 frame = 8
 
 [node name="SpritePlayer" type="AnimationPlayer" parent="Body"]

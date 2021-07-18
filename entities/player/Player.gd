@@ -23,17 +23,19 @@ var animList: = [
 ]
 
 
-var holdable:Holdable
 func on_ready()->void:
 	owner.playerList.append(self)
-	holdable = $Body/Sword1
-	holdable.user = self
 	sm.start("PlayerIdle", {})
+
+
+func _unhandled_input(event):
+	if event.is_action_pressed("action_p" + ctrl):
+		use_holdable()
+
 
 func physics(delta:float)->void:
 	velocity = velocity.move_toward(dir * speed, acceleration *delta)
 	velocity = move_and_slide(velocity)
-
 
 
 func set_dir()->void:
