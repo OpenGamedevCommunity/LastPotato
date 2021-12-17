@@ -1,7 +1,7 @@
 extends KinematicBody2D
 class_name Entity
 
-
+export(Resource) var groupList:Resource
 export(float) var maxHealth: = 100.0
 export(float) var speed: = 1.0 * 60
 export(float) var acc: = 250.0	#default value
@@ -25,6 +25,7 @@ var holdable:Holdable
 func _ready()->void:
 	if !startHoldable.empty():
 		set_holdable(startHoldable)
+	groupList.Add(self)
 	# overridable function to reduce triggering _ready on all inheritted levels
 	on_ready()
 
@@ -59,3 +60,5 @@ func use_holdable()->void:
 	if holdable:
 		holdable.use()
 
+func _exit_tree()->void:
+	groupList.Remove(self)
