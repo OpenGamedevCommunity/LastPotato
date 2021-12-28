@@ -2,6 +2,7 @@ extends KinematicBody2D
 class_name Entity
 
 export (Resource) var subscribtionList
+
 export(float) var maxHealth: = 100.0
 export(float) var speed: = 1.0 * 60
 export(float) var acc: = 250.0	#default value
@@ -21,16 +22,12 @@ var health: = maxHealth
 var is_damaged: = false
 var holdable:Holdable
 
-
 func _ready()->void:
 	if !startHoldable.empty():
 		set_holdable(startHoldable)
 	# overridable function to reduce triggering _ready on all inheritted levels
 	on_ready()
-	subscribtionList.list.append(self)
 
-func _exit_tree()->void:
-	subscribtionList.list.erase(self)
 
 func on_ready()->void:
 	pass
@@ -61,4 +58,12 @@ func set_holdable(newHoldable:String)->void:
 func use_holdable()->void:
 	if holdable:
 		holdable.use()
+
+
+func _enter_tree():
+	subscribtionList.list.append(self)
+
+func _exit_tree()->void:
+	subscribtionList.list.erase(self)
+
 
