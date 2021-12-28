@@ -14,6 +14,7 @@ func _ready()->void:
 
 func _process(delta:float)->void:
 	currentState.process(delta)
+	currentState.physics(delta)
 
 func _physics_process(delta:float)->void:
 	currentState.physics(delta)
@@ -23,7 +24,7 @@ func _unhandled_input(event:InputEvent)->void:
 
 func start(stateName:String, data:Dictionary = {})->void:
 	set_process(true)
-	set_physics_process(true)
+	#set_physics_process(true)
 	set_process_unhandled_input(inputProcess)
 	if !stateList.has(stateName):
 		return
