@@ -24,7 +24,6 @@ var animList: = [
 
 
 func on_ready()->void:
-	owner.playerList.append(self)
 	sm.start("PlayerIdle", {})
 
 
@@ -45,6 +44,3 @@ func set_dir()->void:
 	if dir.length() > 1.0:
 		dir = dir.normalized()
 
-
-func _exit_tree()->void:
-	owner.playerList.erase(self)

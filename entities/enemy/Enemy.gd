@@ -7,6 +7,7 @@ enum MobList{
 	MOB4,
 }
 export(MobList) var mob: = 0
+export(Resource) var playerList
 
 var animList: = [
 	["mob1_idle",	"mob1_run"],
@@ -31,7 +32,7 @@ func physics(delta:float)->void:
 func check_target()->void:
 	var dist: = agroRange
 	target = null
-	for t in owner.playerList:
+	for t in playerList.list:
 		var d:float = (t.global_position - global_position).length()
 		if d <= dist:
 			dist = d
