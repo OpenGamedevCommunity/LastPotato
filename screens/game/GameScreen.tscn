@@ -38,4 +38,4 @@ ctrl = "2"
 character = 3
 
 [node name="Enemy" parent="YSort" groups=["Enemy", "Mob"] instance=ExtResource( 5 )]
-position = Vector2( 62.2341, 152.52 )
+position = Vector2( -402.815, 598.415 )
