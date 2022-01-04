@@ -6,8 +6,9 @@
 [ext_resource path="res://entities/enemy/states/EnemyIdle.gd" type="Script" id=4]
 [ext_resource path="res://entities/enemy/states/EnemyWander.gd" type="Script" id=5]
 [ext_resource path="res://entities/enemy/states/EnemyTarget.gd" type="Script" id=6]
-[ext_resource path="res://resources/EnemyList.tres" type="Resource" id=7]
-[ext_resource path="res://resources/PlayerList.tres" type="Resource" id=8]
+[ext_resource path="res://resources/SubscriptionLists/EnemyList.tres" type="Resource" id=7]
+[ext_resource path="res://resources/SubscriptionLists/PlayerList.tres" type="Resource" id=8]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "mob1_idle"
